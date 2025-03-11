@@ -1,8 +1,12 @@
 import "./App.css";
+import StringCalculator from "./components/StringCalculator";
+
 function App() {
-  return <main>
-    App Component
-  </main>;
+  return (
+    <main>
+      <StringCalculator />
+    </main>
+  );
 }
 
 export default App;
