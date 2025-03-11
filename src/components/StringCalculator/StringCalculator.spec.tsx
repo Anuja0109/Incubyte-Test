@@ -54,7 +54,7 @@ describe("StringCalculator component", () => {
     fireEvent.click(btn);
     // Check if Error message is showing in document
     await waitFor(() => {
-      expect(screen.getByText("negatives not allowed: -3"));
+      expect(screen.getByText("negatives not allowed: -3")).toBeInTheDocument();
     });
   });
 
@@ -67,10 +67,12 @@ describe("StringCalculator component", () => {
     const count = getCallCount(3);
     expect(count).toBe(4);
   });
+
   it("For checking if number greater than thousand are ignored by addNumberOnly func", () => {
     const sum = addNumbersOnly("2;1001");
     expect(sum).toBe(2);
   });
+
   it("For checking addNumbersOnly function is working with different delimiters varying delimiters lengths", () => {
     const sum = addNumbersOnly("//[*][%]\n1*2%3");
     expect(sum).toBe(6);
