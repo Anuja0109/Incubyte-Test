@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import addNumbersOnly from "../../utils/addNumbersOnly";
 import getCallCount from "../../utils/getCallCount";
 
+/**
+ * This component renders a string calculator with total sum, total call count & validation error.
+ * @returns {React.FC} A React functional component.
+ */
 const StringCalculator: React.FC = () => {
   const [input, setInput] = useState("");
   const [totalSum, setTotalSum] = useState(0);

@@ -1,3 +1,9 @@
+/**
+ * Function to increment existing count.
+ * @param {string} numString - string containing numbers with delimiters.
+ * @return {number} The result of addition.
+ */
+
 export default function addNumbersOnly(numString: string): number {
   if (numString === "") {
     return 0;
