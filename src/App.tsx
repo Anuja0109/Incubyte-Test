@@ -3,7 +3,7 @@ import StringCalculator from "./components/StringCalculator";
 
 function App() {
   return (
-    <main>
+    <main className="container">
       <StringCalculator />
     </main>
   );

@@ -28,7 +28,7 @@ const StringCalculator: React.FC = () => {
     <div className="sc-container">
       <h2 className="heading">String Calculator</h2>
       <div className="calculator-sec">
-        <div>
+        <div className="input-sec">
           <input
             type="text"
             name="stringCal"
@@ -40,11 +40,18 @@ const StringCalculator: React.FC = () => {
           <button type="button" data-testid="add-button" onClick={handleClick}>
             Add
           </button>
-          <p className="dispaly-sum" data-testid="display-sum">
-            {totalSum}
-          </p>
-          {err && <p data-testid="validation-err">{err}</p>}
         </div>
+        <p className="dispaly-sum" data-testid="display-sum">
+          Sum: {totalSum}
+        </p>
+        <p className="dispaly-add-count" data-testid="dispaly-add-count">
+          Add button call count: {addCalled}
+        </p>
+        {err && (
+          <p data-testid="validation-err" className="validation-err">
+            {err}
+          </p>
+        )}
       </div>
     </div>
   );

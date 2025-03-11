@@ -4,13 +4,11 @@ export default function addNumbersOnly(numString: string): number {
   }
   const numbers: number[] = [];
   const negatives: number[] = [];
-  numString.split(/[,\n\\n';]/).forEach((num) => {
+  numString.split(/[,\n\\n'%*&#@!^;]/).forEach((num) => {
     if (!isNaN(parseInt(num, 10))) {
       if (parseInt(num) < 0) {
         negatives.push(parseInt(num, 10));
-      } else {
-        if (parseInt(num, 10) <= 1000) numbers.push(parseInt(num, 10));
-      }
+      } else if (parseInt(num, 10) <= 1000) numbers.push(parseInt(num, 10));
     }
   });
 
