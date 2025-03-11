@@ -62,5 +62,9 @@ describe("StringCalculator component", () => {
   it("For checking is getCalledCount function is working correctly", () => {
     const count = getCallCount(3);
     expect(count).toBe(4);
+  });
+  it("For checking if number greater than thousand are ignored by addNumberOnly func", () => {
+    const sum = addNumbersOnly("2;1001");
+    expect(sum).toBe(2);
   })
 });

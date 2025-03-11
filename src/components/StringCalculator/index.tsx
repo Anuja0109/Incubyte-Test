@@ -24,8 +24,6 @@ const StringCalculator: React.FC = () => {
     } else ev.preventDefault();
   };
 
-  console.log({ addCalled });
-
   return (
     <div className="sc-container">
       <h2 className="heading">String Calculator</h2>
@@ -39,7 +37,7 @@ const StringCalculator: React.FC = () => {
             data-testid="str-input"
             onChange={(e) => setInput(e.target.value)}
           />
-          <button type="button" data-testid="add-button" onClick={handleClick} disabled={!input?.trim()}>
+          <button type="button" data-testid="add-button" onClick={handleClick}>
             Add
           </button>
           <p className="dispaly-sum" data-testid="display-sum">
