@@ -4,12 +4,20 @@ import addNumbersOnly from "../../utils/addNumbersOnly";
 const StringCalculator: React.FC = () => {
   const [input, setInput] = useState("");
   const [totalSum, setTotalSum] = useState(0);
+  const [err, setErr] = useState("");
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     console.log({ e });
-    const sum = addNumbersOnly(input);
-    setTotalSum(sum);
-    e.preventDefault();
+    try {
+      const sum = addNumbersOnly(input);
+      setTotalSum(sum);
+      setErr("");
+    } catch (e) {
+      if (e instanceof Error) {
+        setTotalSum(0);
+        setErr(e.message);
+      }
+    }
   };
   return (
     <div className="sc-container">
@@ -21,6 +29,7 @@ const StringCalculator: React.FC = () => {
             name="stringCal"
             value={input}
             placeholder="Enter here..."
+            data-testid="str-input"
             onChange={(e) => setInput(e.target.value)}
           />
           <button type="button" data-testid="add-button" onClick={handleClick}>
@@ -29,6 +38,7 @@ const StringCalculator: React.FC = () => {
           <p className="dispaly-sum" data-testid="display-sum">
             {totalSum}
           </p>
+          {err && <p data-testid="validation-err">{err}</p>}
         </div>
       </div>
     </div>
