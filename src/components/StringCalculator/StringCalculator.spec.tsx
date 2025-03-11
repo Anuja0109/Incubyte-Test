@@ -52,4 +52,9 @@ describe("StringCalculator component", () => {
       expect(screen.getByText("negatives not allowed: -3"));
     });
   });
+
+  it("For checking addNumbersOnly function is throwing error for multiple negatives in input", () => {
+    const sum = () => addNumbersOnly("2/n-3;4,,,-5;8");
+    expect(sum).toThrow("negatives not allowed: -3,-5");
+  });
 });
