@@ -37,4 +37,8 @@ describe("StringCalculator component", () => {
     const sum = addNumbersOnly("2/n-3;4");
     expect(sum).toBe(0);
   });
+  it("For checking addNumbersOnly function is throwing error for negatives in input", () => {
+    const sum = () => addNumbersOnly("2/n-3;4");
+    expect(sum).toThrow("negatives not allowed: -3");
+  })
 });
