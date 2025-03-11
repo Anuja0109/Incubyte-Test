@@ -66,5 +66,9 @@ describe("StringCalculator component", () => {
   it("For checking if number greater than thousand are ignored by addNumberOnly func", () => {
     const sum = addNumbersOnly("2;1001");
     expect(sum).toBe(2);
-  })
+  });
+  it("For checking addNumbersOnly function is working with varying delimeters & delimeters lengths", () => {
+    const sum = addNumbersOnly("//[*][%]\n1*2%3");
+    expect(sum).toBe(6);
+  });
 });
