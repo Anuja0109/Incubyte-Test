@@ -22,6 +22,7 @@ const StringCalculator: React.FC = () => {
         setErr("");
       } catch (e) {
         if (e instanceof Error) {
+          setTotalSum(0);
           setErr(e.message);
         }
       }
