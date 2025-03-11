@@ -1,24 +1,31 @@
 import React, { useState } from "react";
 import addNumbersOnly from "../../utils/addNumbersOnly";
+import getCallCount from "../../utils/getCallCount";
 
 const StringCalculator: React.FC = () => {
   const [input, setInput] = useState("");
   const [totalSum, setTotalSum] = useState(0);
   const [err, setErr] = useState("");
+  const [addCalled, setAddCalled] = useState(0);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log({ e });
-    try {
-      const sum = addNumbersOnly(input);
-      setTotalSum(sum);
-      setErr("");
-    } catch (e) {
-      if (e instanceof Error) {
-        setTotalSum(0);
-        setErr(e.message);
+  const handleClick = (ev: React.MouseEvent<HTMLButtonElement>) => {
+    console.log({ ev });
+    if (input) {
+      setAddCalled(getCallCount(addCalled));
+      try {
+        const sum = addNumbersOnly(input);
+        setTotalSum(sum);
+        setErr("");
+      } catch (e) {
+        if (e instanceof Error) {
+          setErr(e.message);
+        }
       }
-    }
+    } else ev.preventDefault();
   };
+
+  console.log({ addCalled });
+
   return (
     <div className="sc-container">
       <h2 className="heading">String Calculator</h2>
@@ -32,7 +39,7 @@ const StringCalculator: React.FC = () => {
             data-testid="str-input"
             onChange={(e) => setInput(e.target.value)}
           />
-          <button type="button" data-testid="add-button" onClick={handleClick}>
+          <button type="button" data-testid="add-button" onClick={handleClick} disabled={!input?.trim()}>
             Add
           </button>
           <p className="dispaly-sum" data-testid="display-sum">

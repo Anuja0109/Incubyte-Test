@@ -2,6 +2,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import StringCalculator from ".";
 import addNumbersOnly from "../../utils/addNumbersOnly";
+import getCallCount from "../../utils/getCallCount";
 
 describe("StringCalculator component", () => {
   it("For rendering String Calculator Component without crashing", () => {
@@ -57,4 +58,9 @@ describe("StringCalculator component", () => {
     const sum = () => addNumbersOnly("2/n-3;4,,,-5;8");
     expect(sum).toThrow("negatives not allowed: -3,-5");
   });
+
+  it("For checking is getCalledCount function is working correctly", () => {
+    const count = getCallCount(3);
+    expect(count).toBe(4);
+  })
 });
