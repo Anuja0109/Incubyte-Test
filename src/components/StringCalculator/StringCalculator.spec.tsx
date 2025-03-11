@@ -32,4 +32,9 @@ describe("StringCalculator component", () => {
     const sum = addNumbersOnly("2;3");
     expect(sum).toBe(5);
   });
+
+  it("For checking addNumbersOnly function is working with valid input having negative numbers", () => {
+    const sum = addNumbersOnly("2/n-3;4");
+    expect(sum).toBe(0);
+  });
 });
