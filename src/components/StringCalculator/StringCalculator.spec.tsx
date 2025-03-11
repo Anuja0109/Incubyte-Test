@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import StringCalculator from ".";
+import addNumbersOnly from "../../utils/addNumbersOnly";
 
 describe("StringCalculator component", () => {
   it("For rendering String Calculator Component without crashing", () => {
@@ -16,4 +17,9 @@ describe("StringCalculator component", () => {
     fireEvent.click(button);
     expect(logSpy).toHaveBeenCalledTimes(1);
   });
+
+  it("For checking if addNumbersOnly function is working with empty string", () => {
+    const sum = addNumbersOnly("");
+    expect(sum).toBe(0);
+  })
 });
