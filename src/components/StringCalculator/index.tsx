@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import addNumbersOnly from "../../utils/addNumbersOnly";
-import getCallCount from "../../utils/getCallCount";
+import addNumbersOnly from "../../utils/addNumbersOnly.ts";
+import getCallCount from "../../utils/getCallCount.ts";
 
 /**
  * This component renders a string calculator with total sum, total call count & validation error.

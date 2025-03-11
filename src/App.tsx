@@ -1,5 +1,5 @@
 import "./App.css";
-import StringCalculator from "./components/StringCalculator";
+import StringCalculator from "./components/StringCalculator/index.tsx";
 
 function App() {
   return (

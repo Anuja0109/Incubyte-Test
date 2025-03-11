@@ -1,8 +1,8 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import StringCalculator from ".";
-import addNumbersOnly from "../../utils/addNumbersOnly";
-import getCallCount from "../../utils/getCallCount";
+import StringCalculator from "./index.tsx";
+import addNumbersOnly from "../../utils/addNumbersOnly.ts";
+import getCallCount from "../../utils/getCallCount.ts";
 
 describe("StringCalculator component", () => {
   it("For rendering String Calculator Component without crashing", () => {
