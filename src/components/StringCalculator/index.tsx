@@ -52,11 +52,10 @@ const StringCalculator: React.FC = () => {
         <p className="dispaly-add-count" data-testid="dispaly-add-count">
           Add button call count: {addCalled}
         </p>
-        {err && (
-          <p data-testid="validation-err" className="validation-err">
-            {err}
-          </p>
-        )}
+
+        <p data-testid="validation-err" className="validation-err">
+          {err}
+        </p>
       </div>
     </div>
   );
