@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import StringCalculator from ".";
 import addNumbersOnly from "../../utils/addNumbersOnly";
@@ -21,5 +21,19 @@ describe("StringCalculator component", () => {
   it("For checking if addNumbersOnly function is working with empty string", () => {
     const sum = addNumbersOnly("");
     expect(sum).toBe(0);
-  })
+  });
+
+  it("For checking if addNumbersOnly function is working with valid string & rendering correctly in StringCalculator component", () => {
+    const sum = addNumbersOnly("2,3");
+    expect(sum).toBe(5);
+
+    render(<StringCalculator />);
+    const { getByText } = within(screen.getByTestId("display-sum"));
+    expect(getByText("5")).toBeInTheDocument();
+  });
+
+  it("For checking addNumbersOnly function is working with valid input having several different delimeters", () => {
+    const sum = addNumbersOnly("2,;'3");
+    expect(sum).toBe(5);
+  });
 });
