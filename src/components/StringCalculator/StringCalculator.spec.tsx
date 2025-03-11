@@ -1,4 +1,10 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  within,
+  waitFor,
+} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import StringCalculator from ".";
 import addNumbersOnly from "../../utils/addNumbersOnly";
@@ -33,12 +39,18 @@ describe("StringCalculator component", () => {
     expect(sum).toBe(5);
   });
 
-  it("For checking addNumbersOnly function is working with valid input having negative numbers", () => {
-    const sum = addNumbersOnly("2/n-3;4");
-    expect(sum).toBe(0);
-  });
   it("For checking addNumbersOnly function is throwing error for negatives in input", () => {
     const sum = () => addNumbersOnly("2/n-3;4");
     expect(sum).toThrow("negatives not allowed: -3");
-  })
+  });
+
+  it("For checking is error thrown is rendering on screen without braking it", async () => {
+    render(<StringCalculator />);
+    const sum = () => addNumbersOnly("2/n-3;4");
+    expect(sum).toThrow("negatives not allowed: -3");
+    const { getByText } = within(screen.getByTestId("validation-err"));
+    await waitFor(() => {
+      expect(getByText("negatives not allowed: -3")).toBeDefined();
+    });
+  });
 });
