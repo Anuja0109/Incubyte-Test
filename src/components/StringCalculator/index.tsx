@@ -3,10 +3,12 @@ import addNumbersOnly from "../../utils/addNumbersOnly";
 
 const StringCalculator: React.FC = () => {
   const [input, setInput] = useState("");
+  const [totalSum, setTotalSum] = useState(0);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     console.log({ e });
-    addNumbersOnly(input);
+    const sum = addNumbersOnly(input);
+    setTotalSum(sum);
     e.preventDefault();
   };
   return (
@@ -24,6 +26,9 @@ const StringCalculator: React.FC = () => {
           <button type="button" data-testid="add-button" onClick={handleClick}>
             Add
           </button>
+          <p className="dispaly-sum" data-testid="display-sum">
+            {totalSum}
+          </p>
         </div>
       </div>
     </div>

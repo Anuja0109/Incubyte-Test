@@ -3,7 +3,7 @@ export default function addNumbersOnly(numString: string): number {
     return 0;
   }
   const numbers: number[] = [];
-  numString?.split(",").forEach((num) => {
+  numString?.split(/[,\n\\n';]/).forEach((num) => {
     numbers.push(parseInt(num));
   });
 
