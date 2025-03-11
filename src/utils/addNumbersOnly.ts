@@ -8,12 +8,14 @@ export default function addNumbersOnly(numString: string): number {
     if (!isNaN(parseInt(num, 10))) {
       if (parseInt(num) < 0) {
         negatives.push(parseInt(num, 10));
-      } else numbers.push(parseInt(num, 10));
+      } else {
+        if (parseInt(num, 10) <= 1000) numbers.push(parseInt(num, 10));
+      }
     }
   });
 
   if (negatives.length > 0) {
-    throw new Error(`negatives not allowed: ${negatives.join(",")}`); 
+    throw new Error(`negatives not allowed: ${negatives.join(",")}`);
   }
 
   const sum = numbers?.reduce((acc, num) => {
