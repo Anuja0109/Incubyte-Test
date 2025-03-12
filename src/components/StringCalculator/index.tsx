@@ -46,15 +46,14 @@ const StringCalculator: React.FC = () => {
             Add
           </button>
         </div>
+          <span data-testid="validation-err" className="validation-err">
+          {err}
+        </span>
         <p className="dispaly-sum" data-testid="display-sum">
           Sum: {totalSum}
         </p>
         <p className="dispaly-add-count" data-testid="dispaly-add-count">
           Add button call count: {addCalled}
-        </p>
-
-        <p data-testid="validation-err" className="validation-err">
-          {err}
         </p>
       </div>
     </div>
