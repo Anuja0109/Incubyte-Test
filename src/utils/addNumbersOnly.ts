@@ -1,5 +1,5 @@
 /**
- * Function to increment existing count.
+ * Function to add only positive numbers ignoring any delimiters & throw error for negative numbers in input.
  * @param {string} numString - string containing numbers with delimiters.
  * @return {number} The result of addition.
  */
