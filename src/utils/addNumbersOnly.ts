@@ -10,8 +10,15 @@ export default function addNumbersOnly(numString: string): number {
   }
   const numbers: number[] = [];
   const negatives: number[] = [];
+  const alphabets: string[] = [];
+
   numString.split(/[,\n\\n'%*&#@!^;]/).forEach((num) => {
-    if (!isNaN(parseInt(num, 10))) {
+    const regexAl =/([A-Za-z])\w+/g;
+    if (regexAl.test(num)) {
+      console.log({ num });
+      alphabets.push(num);
+    }
+   else if (!isNaN(parseInt(num, 10))) {
       if (parseInt(num) < 0) {
         negatives.push(parseInt(num, 10));
       } else if (parseInt(num, 10) <= 1000) numbers.push(parseInt(num, 10));
@@ -20,6 +27,9 @@ export default function addNumbersOnly(numString: string): number {
 
   if (negatives.length > 0) {
     throw new Error(`negatives not allowed: ${negatives.join(",")}`);
+  }
+  if (alphabets?.length > 0) {
+    throw new Error(`Non numbers are not allowed: ${alphabets.join(",")}`);
   }
 
   const sum = numbers?.reduce((acc, num) => {

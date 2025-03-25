@@ -77,4 +77,9 @@ describe("StringCalculator component", () => {
     const sum = addNumbersOnly("//[*][%]\n1*2%3");
     expect(sum).toBe(6);
   });
+  it("For checking addNumbersOnly function is working correctly with alphabates", () => {
+    const sum = () => addNumbersOnly("ab,3,6;3;0");
+    // expect(sum).toBe(13);
+    expect(sum).toThrow("Non numbers are not allowed: ab");
+  });
 });
