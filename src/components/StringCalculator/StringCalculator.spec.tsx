@@ -78,8 +78,7 @@ describe("StringCalculator component", () => {
     expect(sum).toBe(6);
   });
   it("For checking addNumbersOnly function is working correctly with alphabates", () => {
-    const sum = () => addNumbersOnly("ab,3,6;3;0");
-    // expect(sum).toBe(13);
-    expect(sum).toThrow("Non numbers are not allowed: ab");
+    const sum = () => addNumbersOnly("ab,3,6;3;0,rt");
+    expect(sum).toThrow("Alphabets are not allowed: ab,rt");
   });
 });

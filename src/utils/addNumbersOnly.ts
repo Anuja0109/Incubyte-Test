@@ -15,7 +15,6 @@ export default function addNumbersOnly(numString: string): number {
   numString.split(/[,\n\\n'%*&#@!^;]/).forEach((num) => {
     const regexAl =/([A-Za-z])\w+/g;
     if (regexAl.test(num)) {
-      console.log({ num });
       alphabets.push(num);
     }
    else if (!isNaN(parseInt(num, 10))) {
@@ -29,7 +28,7 @@ export default function addNumbersOnly(numString: string): number {
     throw new Error(`negatives not allowed: ${negatives.join(",")}`);
   }
   if (alphabets?.length > 0) {
-    throw new Error(`Non numbers are not allowed: ${alphabets.join(",")}`);
+    throw new Error(`Alphabets are not allowed: ${alphabets.join(",")}`);
   }
 
   const sum = numbers?.reduce((acc, num) => {
